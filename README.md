@@ -13,3 +13,4 @@ Hello, World!
 * `make`: the same as `make image`
 * `make image`: build a docker image (OS=linux, Arch=amd64) tagged `cloudecho/hello:latest`
 * `make build`: same as `go build -o bin/ .`
+# hello-world-go
