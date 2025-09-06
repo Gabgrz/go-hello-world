@@ -1,16 +1,71 @@
-This is a `hello world` program written in go lang. <br>
-This program create a http server which listens on `0.0.0.0:8080`. <br> 
-It will print `Hello, World!` and local time when it receive any http request. <br>
-If you run this program on localhost, and `curl localhost:8080`, you will get something like this:
+# Go Hello World
 
+A simple HTTP server written in Go that responds with "Hello, World!" and the current local time.
+
+## Description
+
+This program creates an HTTP server that listens on `0.0.0.0:8080` and responds to any HTTP request with:
+- "Hello, World!" message
+- Current local time
+
+## Usage
+
+### Running the application
+
+```bash
+# Run directly with Go
+go run hello.go
+
+# Or build and run
+go build -o bin/hello hello.go
+./bin/hello
+```
+
+### Testing the server
+
+Once the server is running, you can test it with:
+
+```bash
+curl localhost:8080
+```
+
+Expected output:
 ```
 Hello, World!
-2021-08-29 12:28:53.270909 +0800 CST
+2024-01-15 14:30:45.123456 +0000 UTC
 ```
 
-# Build
+## Build Commands
 
-* `make`: the same as `make image`
-* `make image`: build a docker image (OS=linux, Arch=amd64) tagged `cloudecho/hello:latest`
-* `make build`: same as `go build -o bin/ .`
-# hello-world-go
+The project includes a Makefile with the following commands:
+
+- `make` or `make image`: Build a Docker image (OS=linux, Arch=amd64) tagged `cloudecho/hello:latest`
+- `make build`: Build the Go binary locally (`go build -o bin/ .`)
+- `make build2`: Cross-compile for Linux AMD64 (`GOOS=linux GOARCH=amd64 go build -o bin/ .`)
+- `make push`: Build and push the Docker image to the registry
+
+## Docker
+
+### Building the Docker image
+
+```bash
+make image
+```
+
+### Running with Docker
+
+```bash
+docker run -p 8080:8080 cloudecho/hello:latest
+```
+
+## Project Structure
+
+```
+go-hello-world/
+├── hello.go          # Main application code
+├── Dockerfile        # Docker configuration
+├── Makefile          # Build commands
+├── docker-run.sh     # Docker run script
+├── go.mod            # Go module file
+└── README.md         # This file
+```
